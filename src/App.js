@@ -1,19 +1,30 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
 function App() {
 
-  const [data, setData] = useState({});
-  const [location, setLocation] = useState('');
+  const baseURL = 'http://localhost:8080';
+  const [weatherRecord, setWeatherRecord] = useState({});
+  const [error, setError] = useState(null);
 
-  const url = 'https://api.openweathermap.org/data/2.5/weather?lat=55.39594&lon=10.38831&appid=2438ec868e96bc0d041dc6fde565f0b6';
+  useEffect(() => {
+    // invalid url will trigger an 404 error
+    axios.get(`${baseURL}/api/v1/weather/28-02-2024`).then((response) => {
+      setWeatherRecord(response.data);
+    }).catch(error => {
+      setError(error);
+    });
+  }, []);
+  
+  if (error) return `Error: ${error.message}`;
+  if (!weatherRecord) return "No weather record!"
 
   return (
     <div className="app">
       <div className="container">
         <div className="top">
           <div className="location">
-            <p>Odense</p>
+            <p>{weatherRecord.title}</p>
           </div>
           <div className="temp">
             <h1>15°C</h1>
