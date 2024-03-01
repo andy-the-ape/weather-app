@@ -8,7 +8,7 @@ function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // invalid url will trigger an 404 error
+    // invalid url will trigger a 404 error
     axios.get(`${baseURL}/api/v1/weather/28-02-2024`).then((response) => {
       setWeatherRecord(response.data);
     }).catch(error => {
