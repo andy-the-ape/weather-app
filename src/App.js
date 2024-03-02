@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import UilReact from '@iconscout/react-unicons/icons/uil-react';
 import TopButtons from './components/TopButtons';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import History from './pages/History';
+import { UilSun } from '@iconscout/react-unicons';
 
 function App() {
   const baseURL = 'http://localhost:8080';
@@ -12,7 +12,7 @@ function App() {
 
   useEffect(() => {
     // invalid URL will trigger a 404 error
-    axios.get(`${baseURL}/api/v1/weather/02-03-2024`)
+    axios.get(`${baseURL}/api/v1/weather/today`)
       .then((response) => {
         setWeatherRecord(response.data);
       })
@@ -27,8 +27,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<AppContent weatherRecord={weatherRecord} />}>
-          <Route path="history" element={<History/>} />
+        <Route exact path="/" element={<AppContent weatherRecord={weatherRecord} />}>
+          <Route path="historik" element={<History/>} />
           <Route path="*" element={<h1>Not Found</h1>} />
         </Route>
       </Routes>
@@ -56,7 +56,7 @@ function AppContent({ weatherRecord }) {
         </div>
         <div className="mid">
           <div className="weathericon">
-            <UilReact size={200} />
+            <UilSun size={200}/>
           </div>
         </div>
         <div className="bottom">

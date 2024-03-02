@@ -65,8 +65,15 @@ h1 {
   transform: rotate(269deg);
 }
 
+.app .mid {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
 .app .bottom {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   text-align: center;
   width: 100%;
@@ -74,6 +81,7 @@ h1 {
   padding: 1rem;
   border-radius: 12px;
   background-color: rgba(255, 255, 255, 0.2);
+  overflow: hidden;
 }
 
 .bold {

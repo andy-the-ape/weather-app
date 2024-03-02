@@ -1,7 +1,7 @@
 .topbuttons {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
 }
 
 .link {
@@ -12,8 +12,8 @@
   display: flex;
   justify-content: space-evenly;
   text-align: center;
-  margin: 1rem 0.5rem;
-  padding: 0.5rem 1rem;
+  margin: 1rem 1rem 1rem 0rem;
+  padding: 0.7rem 1.8rem 0.7rem 1.2rem;
   border-radius: 12px;
   border-style: hidden;
   background-color: rgba(255, 255, 255, 0.3);
@@ -22,8 +22,15 @@
   cursor: pointer;
 }
 
+.buttonIcon {
+  bottom: -30%;
+  margin-right: 0.5rem;
+}
+
 .topbuttons button:hover {
   background-color: rgba(255, 255, 255, 0.5);
+  scale: 1.1;
+  transition: ease-out 0.1s;
 }
 
 .topbuttons button:active {

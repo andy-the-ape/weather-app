@@ -1,18 +1,21 @@
 import React from 'react';
 import './TopButtons.css';
 import { Link } from 'react-router-dom';
+import { UilTemperatureThreeQuarter, UilChartLine } from '@iconscout/react-unicons';
 
 function TopButtons() {
 
     const pages = [
-        {name: 'Today', url: '/'},
-        {name: 'History', url: '/history'}
+        {id: 1, name: 'I dag', url: '/', icon: <UilTemperatureThreeQuarter />},
+        {id: 2, name: 'Historik', url: '/historik', icon: <UilChartLine />}
     ]
 
   return (
     <div className='topbuttons'>{pages.map((page) => (
-        <Link className='link' to={page.url}>
-            <button key={page.name}>{page.name}</button>
+        <Link key={page.id} className='link' to={page.url}>
+            <button>
+              <p className='buttonIcon'>{page.icon}</p>{page.name}
+            </button>
         </Link>
     ))}</div>
   )
