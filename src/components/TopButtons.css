@@ -1,0 +1,31 @@
+.topbuttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link {
+  text-decoration: inherit;
+}
+
+.topbuttons button {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  margin: 1rem 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  border-style: hidden;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.topbuttons button:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.topbuttons button:active {
+  background-color: rgba(255, 255, 255, 0.7);
+}
