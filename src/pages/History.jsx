@@ -6,12 +6,14 @@ import LineChart from '../components/LineChart';
 function History() {
   const [weatherRecords, setWeatherRecords] = useState([]);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   const [chartData, setChartData] = useState({
-    labels: [weatherRecords.map((record) => record.date)],
+    labels: [],
     datasets: [
       {
         label: 'Temperatur',
-        data: [weatherRecords.map((record) => record.temperature)],
+        data: [],
         backgroundColor: 'rgb(255, 99, 132)',
         borderColor: 'rgb(255, 255, 255)',
         borderWidth: 2,
@@ -24,19 +26,36 @@ function History() {
     axios.get(`${baseURL}/api/v1/weather/all`)
       .then((response) => {
         setWeatherRecords(response.data);
+
+        // Update chartData based on fetched weather records
+        const labels = response.data.map((record) => record.date);
+        const data = response.data.map((record) => record.temperature);
+        setChartData({
+          labels: labels,
+          datasets: [
+            {
+              label: 'Temperatur',
+              data: data,
+              backgroundColor: 'rgb(255, 99, 132)',
+              borderColor: 'rgb(255, 255, 255)',
+              borderWidth: 2,
+            },
+          ]
+        });
+        setLoading(false); // Update loading state
       })
       .catch(error => {
         setError(error);
+        setLoading(false); // Update loading state even if there's an error
       });
   }, []);
 
+  if (loading) return "Loading..."; // Display loading message while waiting for API response
   if (error) return `Error: ${error.message}`;
   if (!weatherRecords || weatherRecords.length === 0) return "No weather records!";
 
-  
-
-    return (
-        <div className="app">
+  return (
+    <div className="app">
       <div className="container">
         <div className="topbuttons">
           <TopButtons />
@@ -67,7 +86,7 @@ function History() {
         </div>
       </div>
     </div>
-    )
+  );
 }
 
 export default History;
