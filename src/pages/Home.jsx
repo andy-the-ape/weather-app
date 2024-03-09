@@ -11,13 +11,16 @@ function Home({ weatherRecord }) {
         </div>
         <div className="top">
           <div className="location">
-            {weatherRecord.location && <p>{weatherRecord.location}</p>}
+            {weatherRecord.location.name && <p>{weatherRecord.location.name}</p>}
+          </div>
+          <div className="date">
+            {weatherRecord.date && <p>{weatherRecord.date}</p>}
           </div>
           <div className="temp">
             {weatherRecord.temperature && <h1>{weatherRecord.temperature.toFixed()}°C</h1>}
           </div>
           <div className="description">
-            {weatherRecord.weatherDescription && <p>{weatherRecord.weatherDescription}</p>}
+            {weatherRecord.description && <p>{weatherRecord.description}</p>}
           </div>
         </div>
         <div className="mid">

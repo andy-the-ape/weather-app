@@ -6,21 +6,24 @@ import Home from './pages/Home';
 
 function App() {
   const baseURL = 'http://localhost:8080';
-  const [weatherRecord, setWeatherRecord] = useState({});
+  const [weatherRecord, setWeatherRecord] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get(`${baseURL}/api/v1/weather`)
-      .then((response) => {
+    const fetchData = async () => { 
+      try {
+        const response = await axios.get(`${baseURL}/api/v1/weather`);
         setWeatherRecord(response.data);
-      })
-      .catch(error => {
+      } catch (error) {
         setError(error);
-      });
+      }
+    };
+
+    fetchData();
   }, []);
 
   if (error) return `Error: ${error.message}`;
-  if (!weatherRecord) return "No weather record!";
+  if (!weatherRecord) return "Loading...";
 
   return (
     <BrowserRouter>

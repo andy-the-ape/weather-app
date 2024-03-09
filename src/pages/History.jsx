@@ -23,12 +23,12 @@ function History() {
 
   useEffect(() => {
     const baseURL = 'http://localhost:8080';
-    axios.get(`${baseURL}/api/v1/weather/all`)
+    axios.get(`${baseURL}/api/v1/weather/historik`)
       .then((response) => {
         setWeatherRecords(response.data);
 
         // Update chartData based on fetched weather records
-        const labels = response.data.map((record) => record.date);
+        const labels = response.data.map((record) => record.date + '\n' + record.time);
         const data = response.data.map((record) => record.temperature);
         setChartData({
           labels: labels,
