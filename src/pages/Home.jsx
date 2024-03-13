@@ -1,6 +1,6 @@
 import React from 'react';
 import TopButtons from '../components/TopButtons';
-import { UilSun } from '@iconscout/react-unicons';
+import WeatherIcon from '../components/WeatherIcon';
 
 function Home({ weatherRecord }) {
   return (
@@ -25,7 +25,7 @@ function Home({ weatherRecord }) {
         </div>
         <div className="mid">
           <div className="weathericon">
-            <UilSun size={200}/>
+            <WeatherIcon weatherRecord={weatherRecord} />
           </div>
         </div>
         <div className="bottom">
