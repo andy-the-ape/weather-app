@@ -25,7 +25,7 @@ function Home({ weatherRecord }) {
         </div>
         <div className="mid">
           <div className="weathericon">
-            <WeatherIcon weatherRecord={weatherRecord} />
+            <WeatherIcon currentApiId={weatherRecord.type.apiId}/>
           </div>
         </div>
         <div className="bottom">
