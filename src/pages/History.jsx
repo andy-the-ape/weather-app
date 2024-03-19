@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import TopButtons from '../components/TopButtons';
+import ChartButtons from '../components/ChartButtons';
 import axios from 'axios';
 import LineChart from '../components/LineChart';
 
@@ -23,7 +24,7 @@ function History() {
 
   useEffect(() => {
     const baseURL = 'http://localhost:8080';
-    axios.get(`${baseURL}/api/v1/weather/historik`)
+    axios.get(`${baseURL}/api/v1/weather/history/all`)
       .then((response) => {
         setWeatherRecords(response.data);
 
@@ -74,16 +75,9 @@ function History() {
         <div className="mid">
             <LineChart chartData={chartData}/>
         </div>
-        <div className="bottom">
-          <div className="wind">Temperatur
-          </div>
-          <div className="direction">
-            Vindhastighed
-          </div>
-          <div className="humidity">
-            Luftfugtighed
-          </div>
-        </div>
+        
+          <ChartButtons />
+        
       </div>
     </div>
   );
