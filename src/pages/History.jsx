@@ -24,7 +24,7 @@ function History() {
 
   useEffect(() => {
     const baseURL = 'http://localhost:8080';
-    axios.get(`${baseURL}/api/v1/weather/history/all`)
+    axios.get(`${baseURL}/api/v1/weather/history/48`)
       .then((response) => {
         setWeatherRecords(response.data);
 

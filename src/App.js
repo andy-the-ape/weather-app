@@ -29,7 +29,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Home weatherRecord={weatherRecord} />} />
-        <Route path="history/all" element={<History/>} />
+        <Route path="history/" element={<History/>} />
         <Route path="*" element={<h1>Not Found</h1>} />
       </Routes>
     </BrowserRouter>

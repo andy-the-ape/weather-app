@@ -7,7 +7,7 @@ function TopButtons() {
 
     const pages = [
         {id: 1, name: 'I dag', url: '/', icon: <UilTemperatureThreeQuarter />},
-        {id: 2, name: 'Historik', url: '/history/all', icon: <UilChartLine />}
+        {id: 2, name: 'Historik', url: '/history/', icon: <UilChartLine />}
     ]
 
   return (

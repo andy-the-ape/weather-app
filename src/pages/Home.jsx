@@ -1,8 +1,10 @@
 import React from 'react';
 import TopButtons from '../components/TopButtons';
 import WeatherIcon from '../components/WeatherIcon';
+import Wind from '../components/Wind';
 
 function Home({ weatherRecord }) {
+
   return (
     <div className="app">
       <div className="container">
@@ -37,13 +39,8 @@ function Home({ weatherRecord }) {
               </>
             )}
           </div>
-          <div className="direction">
-            {weatherRecord.windDirection && (
-              <>
-                <p className='bold'>{weatherRecord.windDirection}</p>
-                <p>Vindretning</p>
-              </>
-            )}
+          <div className="wind">
+            <Wind degrees={weatherRecord.windDirection}/>
           </div>
           <div className="humidity">
             {weatherRecord.humidity && (
