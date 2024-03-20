@@ -29,7 +29,6 @@ const options = {
     x: {
       title: {
         display: true,
-        text: 'Dato',
         color: 'white'
       },
       ticks: {
