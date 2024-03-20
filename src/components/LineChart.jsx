@@ -1,9 +1,30 @@
 import React from 'react';
 import {Line} from 'react-chartjs-2';
-import {Chart as ChartJS} from 'chart.js/auto';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+} from 'chart.js/auto';
 
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const options = {
+  responsive: true,
+  maintainAspectRatio: false,
+  aspectRatio: 1,
   scales: {
     x: {
       title: {
@@ -18,14 +39,30 @@ const options = {
     y: {
       title: {
         display: true,
-        text: 'Temperatur',
         color: 'white'
       },
       ticks: {
         color: 'white'
       }
     }
-  }
+  },
+  plugins: {
+    title: {
+      display: true,
+      text: 'Vejret de sidste 48 timer',
+      font: {
+        size: 20
+      },
+      color: 'white'
+    },
+    legend: {
+      display: true,
+      labels: {
+        color: 'white',
+        padding: 20
+      }
+    },
+  },
 }
 
 const chartBackgroundPlugin = {
@@ -41,7 +78,11 @@ const chartBackgroundPlugin = {
 
 function LineChart({chartData}) {
   return (
-    <Line data={chartData} options={options} plugins={[chartBackgroundPlugin]}/>
+    <Line 
+    data={chartData} 
+    redraw={true}
+    options={options} 
+    plugins={[chartBackgroundPlugin]}/>
   )
 }
 

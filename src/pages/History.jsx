@@ -29,18 +29,45 @@ function History() {
         setWeatherRecords(response.data);
 
         // Update chartData based on fetched weather records
-        const labels = response.data.map((record) => record.date + '\n' + record.time);
-        const data = response.data.map((record) => record.temperature);
+        const labels = response.data.map((record) => {
+          const dateTime = new Date(record.date + 'T' + record.time); // Combine date and time
+          const formattedTime = dateTime.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
+          return `${record.date} ${formattedTime}`;
+        });
+        
+        
+        
+        
+
+        const temperatureData = response.data.map((record) => record.temperature);
+        const windSpeedData = response.data.map((record) => record.windSpeed);
+        const humidityData = response.data.map((record) => record.humidity);
         setChartData({
           labels: labels,
           datasets: [
             {
-              label: 'Temperatur',
-              data: data,
-              backgroundColor: 'rgb(255, 99, 132)',
-              borderColor: 'rgb(255, 255, 255)',
-              borderWidth: 2,
+              label: 'Temperatur (°C)',
+              data: temperatureData,
+              borderColor: 'rgb(255, 99, 132)',
+              backgroundColor: 'rgba(255, 99, 132, 0.5)',
+              borderWidth: 3,
             },
+            {
+              label: 'Vindhastighed (km/t)',
+              data: windSpeedData,
+              borderColor: 'rgb(53, 162, 235)',
+              backgroundColor: 'rgba(53, 162, 235, 0.5)',
+              borderWidth: 3,
+              hidden: true,
+            },
+            {
+              label: 'Luftfugtighed (%)',
+              data: humidityData,
+              borderColor: 'rgb(112, 171, 56)',
+              backgroundColor: 'rgba(112, 171, 56, 0.5)',
+              borderWidth: 3,
+              hidden: true,
+            }
           ]
         });
         setLoading(false); // Update loading state
@@ -61,22 +88,13 @@ function History() {
         <div className="topbuttons">
           <TopButtons />
         </div>
-        <div className="top">
-          <div className="location">
-            
-          </div>
-          <div className="temp">
-            
-          </div>
-          <div className="description">
-            
-          </div>
-        </div>
-        <div className="mid">
+        
+        <div className="chartContainer">
             <LineChart chartData={chartData}/>
+            
         </div>
         
-          <ChartButtons />
+          
         
       </div>
     </div>
