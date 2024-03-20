@@ -34,7 +34,7 @@ function Home({ weatherRecord }) {
           <div className="wind">
             {weatherRecord.windSpeed && (
               <>
-                <p className='bold'>{weatherRecord.windSpeed.toFixed()} km/t</p>
+                <p className='bold'>{weatherRecord.windSpeed.toFixed(1)} km/t</p>
                 <p>Vindhastighed</p>
               </>
             )}
