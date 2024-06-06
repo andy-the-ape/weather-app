@@ -67,7 +67,7 @@ const options = {
 const chartBackgroundPlugin = {
   id: 'chartBackgroundPlugin',
   beforeDatasetsDraw(chart, args, plugins) {
-    const {ctx, chartArea: {top, bottom, left, right, width, height}} = chart;
+    const {ctx, chartArea: {top, left, width, height}} = chart;
     ctx.save();
 
     ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';

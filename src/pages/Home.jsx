@@ -1,7 +1,7 @@
 import React from 'react';
-import TopButtons from '../components/TopButtons';
-import WeatherIcon from '../components/WeatherIcon';
-import Wind from '../components/Wind';
+import TopButtons from '../components/TopButtons/TopButtons';
+import WeatherIcon from '../components/WeatherIcon/WeatherIcon';
+import Wind from '../components/Wind/Wind';
 
 function Home({ weatherRecord }) {
 
