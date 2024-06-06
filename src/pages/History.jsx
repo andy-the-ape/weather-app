@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import TopButtons from '../components/TopButtons';
-import ChartButtons from '../components/ChartButtons';
+import TopButtons from '../components/TopButtons/TopButtons';
 import axios from 'axios';
-import LineChart from '../components/LineChart';
+import LineChart from '../components/LineChart/LineChart';
 
 function History() {
   const [weatherRecords, setWeatherRecords] = useState([]);
@@ -34,10 +33,6 @@ function History() {
           const formattedTime = dateTime.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
           return `${record.date} ${formattedTime}`;
         });
-        
-        
-        
-        
 
         const temperatureData = response.data.map((record) => record.temperature);
         const windSpeedData = response.data.map((record) => record.windSpeed);
@@ -88,14 +83,9 @@ function History() {
         <div className="topbuttons">
           <TopButtons />
         </div>
-        
         <div className="chartContainer">
             <LineChart chartData={chartData}/>
-            
         </div>
-        
-          
-        
       </div>
     </div>
   );
